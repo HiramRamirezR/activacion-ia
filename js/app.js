@@ -44,7 +44,8 @@ class AppManager {
                 body: JSON.stringify({
                     imageData: imageData,
                     carId: ui.selectedCar.id,
-                    carName: ui.selectedCar.name
+                    carName: ui.selectedCar.name,
+                    carColor: ui.selectedColor.name
                 })
             });
 

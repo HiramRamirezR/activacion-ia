@@ -29,7 +29,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        const { imageData, carId, carName } = JSON.parse(event.body);
+        const { imageData, carId, carName, carColor } = JSON.parse(event.body);
         const apiKey = process.env.GEMINI_API_KEY;
         const ai = new GoogleGenAI(apiKey);
         const model = 'gemini-2.5-flash-image';
@@ -38,10 +38,10 @@ exports.handler = async (event) => {
         const base64Data = imageData.replace(/^data:image\/\w+;base64,/, "");
         const mimeType = imageData.match(/^data:([^;]+);/)?.[1] || 'image/jpeg';
 
-        console.log(`Generando experiencia BYD para ${carName}...`);
+        console.log(`Generando experiencia BYD para ${carName} en color ${carColor}...`);
 
         // 2. Call Gemini AI
-        const prompt = `Generate a professional automotive digital photo. Place the person from the original image inside a BYD ${carName}, clearly visible through the side window. Maintain the person's identity, facial features, and natural likeness exactly as in the input photo. The person must have a natural, pleasant, and happy smile, avoiding any exaggerated or euphoric expressions. The car must be a 100% accurate BYD ${carName} model in a premium studio lighting setting. Photorealistic high-end commercial style. The image must be completely free of any text, words, or letters in the background or on the car.`;
+        const prompt = `Generate a professional automotive digital photo. Place the person from the original image inside a BYD ${carName} in ${carColor} color, clearly visible through the side window. Maintain the person's identity, facial features, and natural likeness exactly as in the input photo. The person must have a natural, pleasant, and happy smile, avoiding any exaggerated or euphoric expressions. The car must be a 100% accurate BYD ${carName} model in ${carColor} color in a premium studio lighting setting. Photorealistic high-end commercial style. The image must be completely free of any text, words, or letters in the background or on the car.`;
 
         const response = await ai.models.generateContent({
             model: model,

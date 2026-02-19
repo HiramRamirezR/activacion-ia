@@ -41,7 +41,16 @@
                 </div>
             </section>
 
-            <!-- Step 2: Camera Capture -->
+            <!-- Color Selection Modal -->
+            <div id="color-modal" class="modal">
+                <div class="modal-content">
+                    <button id="close-modal" class="close-btn">&times;</button>
+                    <h2 class="modal-title">Selecciona el color de tu <span id="modal-car-name"></span></h2>
+                    <div id="color-options" class="color-grid-modal">
+                        <!-- Colors injected by JS -->
+                    </div>
+                </div>
+            </div>
             <section id="step-camera" class="step">
                 <div class="content-wrapper">
                     <button class="btn-back" id="back-to-selection">← Volver</button>
