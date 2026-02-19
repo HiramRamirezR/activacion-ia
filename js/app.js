@@ -29,7 +29,15 @@ class AppManager {
         const context = this.canvasElement.getContext('2d');
         this.canvasElement.width = this.webcamElement.videoWidth;
         this.canvasElement.height = this.webcamElement.videoHeight;
+
+        // Espejar la captura para que coincida con la previsualización
+        context.translate(this.canvasElement.width, 0);
+        context.scale(-1, 1);
+
         context.drawImage(this.webcamElement, 0, 0);
+
+        // Restaurar estado del contexto por si se vuelve a usar
+        context.setTransform(1, 0, 0, 1, 0, 0);
 
         const imageData = this.canvasElement.toDataURL('image/jpeg', 0.8);
         this.stopCamera();

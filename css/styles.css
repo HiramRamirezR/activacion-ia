@@ -43,6 +43,7 @@ header {
     letter-spacing: 2px;
     background: linear-gradient(90deg, #FFFFFF, var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -152,6 +153,13 @@ header {
 #webcam {
     width: 100%;
     display: block;
+    transform: scaleX(-1);
+    /* Espejar cámara */
+}
+
+#photo-canvas {
+    transform: scaleX(-1);
+    /* Espejar canvas de previsualización si se usa */
 }
 
 .camera-overlay {
