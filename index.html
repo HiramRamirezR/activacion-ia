@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYD AI Experience | Conduce el Futuro</title>
+    <meta name="description" content="Vive la experiencia de conducir un BYD con el poder de la Inteligencia Artificial.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Firebase (SDK minimalista) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        // Aquí se inicializará con tus datos del .env más adelante
+    </script>
+</head>
+<body>
+    <div id="app">
+        <!-- Main Landing -->
+        <header>
+            <div class="logo">BYD AI</div>
+        </header>
+
+        <main id="main-content">
+            <!-- Step 1: Selection -->
+            <section id="step-selection" class="step active">
+                <div class="content-wrapper">
+                    <h1 class="main-title">Conduce el futuro, <span>hoy mismo</span></h1>
+                    <p class="subtitle">Selecciona el modelo que quieres manejar y tómate una foto para vivir la experiencia.</p>
+                    
+                    <div class="car-grid" id="car-selector">
+                        <!-- Car cards will be injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Camera Capture -->
+            <section id="step-camera" class="step">
+                <div class="content-wrapper">
+                    <button class="btn-back" id="back-to-selection">← Volver</button>
+                    <h2 class="section-title">Tu foto al volante</h2>
+                    <div class="camera-container">
+                        <video id="webcam" autoplay playsinline></video>
+                        <canvas id="photo-canvas" style="display:none;"></canvas>
+                        <div class="camera-overlay">
+                            <div class="face-guide"></div>
+                        </div>
+                    </div>
+                    <div class="camera-actions">
+                        <button id="capture-btn" class="btn-primary">📷 Tomar Foto</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: Generation / Loading -->
+            <section id="step-loading" class="step">
+                <div class="loading-background">
+                    <video id="loading-video" loop muted playsinline></video>
+                    <div class="loading-overlay">
+                        <div class="loader"></div>
+                        <h2 id="loading-message">Estamos preparando tu próximo viaje...</h2>
+                        <p id="loading-submessage">La IA está puliendo cada detalle de tu BYD.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 4: Result -->
+            <section id="step-result" class="step">
+                <div class="result-container">
+                    <div class="image-viewer">
+                        <img id="generated-image" src="" alt="Tu foto con BYD">
+                    </div>
+                    <div class="result-sidebar">
+                        <h2 class="result-title">¡Te ves increíble!</h2>
+                        <p class="result-text">Escanea el código QR para descargar tu foto y compartirla.</p>
+                        <div id="qrcode" class="qr-container"></div>
+                        <button id="new-gen-btn" class="btn-secondary">Probar otro auto</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</body>
+</html>
