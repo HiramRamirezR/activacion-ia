@@ -45,10 +45,13 @@ exports.handler = async (event) => {
 
         const response = await ai.models.generateContent({
             model: model,
+            generationConfig: {
+                aspectRatio: "16:9"
+            },
             contents: [{
                 parts: [
                     { inlineData: { mimeType: mimeType, data: base64Data } },
-                    { text: prompt }
+                    { text: prompt + " The output image must be in horizontal widescreen (landscape) orientation." }
                 ]
             }]
         });
