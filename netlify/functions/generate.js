@@ -41,7 +41,7 @@ exports.handler = async (event) => {
         console.log(`Generando experiencia BYD para ${carName}...`);
 
         // 2. Call Gemini AI
-        const prompt = `Generate a tight close-up professional automotive shot of a ${carName} from a side-angle exterior perspective. The framing should be focused on the front half of the car and the driver. Through the side window, the person from the photo must be clearly visible and easily recognizable, showing a massive, joyful smile of pure excitement. Use a shallow depth of field (bokeh) to heavily blur the background. The car design must be 100% accurate to the official BYD ${carName} model. Premium cinematic lighting, high-end commercial photography style, 8k resolution. No text or logos on the windows or background.`;
+        const prompt = `Generate a professional automotive digital photo. Place the person from the original image inside a BYD ${carName}, clearly visible through the side window. Maintain the person's identity, facial features, and natural likeness exactly as in the input photo. The person must have a natural, pleasant, and happy smile, avoiding any exaggerated or euphoric expressions. The car must be a 100% accurate BYD ${carName} model in a premium studio lighting setting. Photorealistic high-end commercial style. The image must be completely free of any text, words, or letters in the background or on the car.`;
 
         const response = await ai.models.generateContent({
             model: model,
